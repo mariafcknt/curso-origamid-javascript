@@ -92,3 +92,40 @@ function jaVisitei(paisesVisitados) {
 }
 console.log(precisoVisitar(20));
 console.log(jaVisitei(20));
+
+//EXERCÍCIOS DE ESCOPO DA FUNÇÃO
+
+// Por qual motivo o código abaixo retorna com erros?
+{
+  var cor = 'preto';
+  const marca = 'Fiat';
+  let portas = 4;
+}
+//console.log(var, marca, portas);
+//a variável "cor" não foi passado como argumento 
+//"marca" e "portas" apenas ficam visíveis dentro do bloco
+
+// Como corrigir o erro abaixo?
+const dois = 2
+
+function somarDois(x) {
+  return x + dois;
+}
+function dividirDois(x) {
+  return x + dois;
+}
+somarDois(4);
+dividirDois(6);
+
+//a constante "dois" não pode ser acessada pela função "dividirDois" pois foi criada em "somarDois"
+//para arrumar isso a variável deve ser criada fora das funções
+
+// O que fazer para total retornar 500?
+const numero = 50;
+
+for(let numero = 0; numero < 10; numero++) {
+  console.log(numero);
+}
+
+const total = 10 * numero;
+console.log('Total: ' + total);
