@@ -1,98 +1,71 @@
-// function Carro(marca, preco) {
-//     this.marca = marca
-//     this.preco =  preco
-//     console.log(this)
-// }
-
-// const honda = new Carro('Honda', 3000)
-// const fiat = new Carro('Fiat', 4000)
-
-// function Carro2(marca, precoInicial) {
-//     const taxa = 1.2
-//     const precoFinal = precoInicial * taxa
-//     this.marca = marca
-//     this.preco =  precoFinal
-// }
-
-// const mazda = new Carro2('Mazda', 5000)
-
-// const Dom = {
-//     seletor: 'li',
-//     element() {
-//         return document.querySelector(this.seletor)
-//     },
-//     ativar() {
-//        this.element().classList.add('ativar')
-//     }
-// }
-
-// function Dom(seletor) {
-//     //seleciona o elemento
-//     this.element = function() {
-//         return document.querySelector(seletor)
-//     }
-//     //adiciona a classe ao elemento
-//     this.ativar = function(classe) {
-//        this.element().classList.add(classe)
-//     }
-// }
-
-// const li = new Dom('li')
-// const ul = new Dom('ul')
-
-// const lastLi = new Dom('li:last-child')
-// lastLi.ativar('ativo')
-
-//EXERCÍCIOS
-
-// Transforme o objeto abaixo em uma Constructor Function
-const pessoa = {
-  nome: 'Nome pessoa',
-  idade: 0,
-  andar() {
-    console.log(this.nome + ' andou');
-  }
-}
-
-function Pessoa(nome, idade) {
+function Pessoa(nome, idade){
     this.nome = nome
     this.idade = idade
     this.andar = function() {
-        console.log(`${this.nome} andou`)
+        console.log('Andou pelo objeto')
     }
 }
 
-// Crie 3 pessoas, João - 20 anos,
-// Maria - 25 anos, Bruno - 15 anos
+//adiciona o método andar() ao construtor
+Pessoa.prototype.andar = function() {
+    console.log(this.nome + ' andou')
+}
 
-const p1 = new Pessoa('João', 20)
-const p2 = new Pessoa('Maria', 25)
-const p3 = new Pessoa('Bruno', 15)
+const leon = new Pessoa('Leon', 34)
+//leon.andar() //o js procura o método primeiro no objeto e depois no prototype
 
-// Crie uma Constructor Function (Dom) para manipulação
-// de listas de elementos do dom. Deve conter as seguintes
-// propriedades e métodos:
-//
-// elements, retorna NodeList com os elementos selecionados
-// addClass(classe), adiciona a classe a todos os elementos
-// removeClass(classe), remove a classe a todos os elementos
+const pais = 'Brasil'
+const cidade = new String('Rio')
 
-function Dom(seletor){
-    this.seletor = seletor
-    this.elements =  document.querySelectorAll(this.seletor)
-    this.addClass = function(classe) {
-        this.elements.forEach((item) => {
-            item.classList.add(classe)
-        })
-    }
-    this.removeClass = function(classe) {
-        this.elements.forEach((item) => {
-            item.classList.remove(classe)
-        })
+const listaAnimais = ['Cachorro', 'Gato', 'Cavalo']
+
+const lista = document.querySelectorAll('li')
+
+//transforme em um array
+const listaArray = Array.prototype.slice.call(lista) //from está linkado direto no protótipo de Array
+//ou
+Array.from(lista) //from está linkado direto a Array
+
+const Carro = {
+    marca: 'Ford',
+    preco: 2000,
+    andar () {
+      return true  
     }
 }
 
-const li = new Dom('li')
-li.addClass('teste')
-li.addClass('a')
-li.removeClass('a')
+// Crie uma função construtora de Pessoas
+// Deve conter nome, sobrenome e idade
+// Crie um método no protótipo que retorne
+// o nome completo da pessoa
+
+function Pessoa(nome, sobrenome, idade) {
+    this.nome = nome
+    this.sobrenome = sobrenome
+    this.idade = idade
+}
+
+Pessoa.prototype.nomeCompleto = function() {
+    return `${this.nome} ${this.sobrenome}`
+}
+
+const p1 = new Pessoa('Leon', 'Kennedy', 34)
+console.log(p1.nomeCompleto())
+
+// Liste os métodos acessados por 
+// dados criados com NodeList,
+// HTMLCollection, Document
+
+// Liste os construtores dos dados abaixo
+const li = document.querySelector('li');
+
+li;
+li.click;
+li.innerText;
+li.value;
+li.hidden;
+li.offsetLeft;
+li.click();
+
+// Qual o construtor do dado abaixo:
+li.hidden.constructor.name;
