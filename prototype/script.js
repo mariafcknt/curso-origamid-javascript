@@ -56,16 +56,22 @@ console.log(p1.nomeCompleto())
 // dados criados com NodeList,
 // HTMLCollection, Document
 
+console.log(Object.getOwnPropertyNames(NodeList.prototype))
+console.log(Object.getOwnPropertyNames(HTMLCollection.prototype))
+console.log(Object.getOwnPropertyNames(Document.prototype))
+
 // Liste os construtores dos dados abaixo
 const li = document.querySelector('li');
 
-li;
-li.click;
-li.innerText;
-li.value;
-li.hidden;
-li.offsetLeft;
-li.click();
+li; //HTMLLIElement()
+li.click; //Function()
+li.innerText; //String()
+li.value; //Number()
+li.hidden; //Boolean()
+li.offsetLeft; //Number()
+li.click(); //undefined - o que importa é o retorno, que nesse caso não existe
 
 // Qual o construtor do dado abaixo:
-li.hidden.constructor.name;
+li.hidden.constructor.name; //String
+
+
