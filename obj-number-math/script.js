@@ -39,6 +39,8 @@
 // console.log(Math.random() * 100) // gera um número aleatório entre 0 e 100
 // console.log(Math.random() * (72 - 32 + 1) + 32) // gera um número aleatório entre 72 e 32 (max - min + 1) + min)
 
+// EXERCÍCIOS
+
 // Retorne um número aleatório
 // entre 1050 e 2000
 console.log(Math.random() * (2000 - 1050 + 1) + 1050)
@@ -46,6 +48,7 @@ console.log(Math.random() * (2000 - 1050 + 1) + 1050)
 // Retorne o maior número da lista abaixo
 const numeros = '4, 5, 20, 8, 9';
 let arrayNumeros = numeros.split(',')
+// console.log(Math.max(...arrayNumeros)) //"..." coloca cada item do array como argumento
 
 let maiorNumero = 0;
 arrayNumeros.forEach((numero) => {
@@ -62,7 +65,7 @@ console.log(maiorNumero)
 // e retornar os números com centavos arredondados
 // depois retorne a soma total
 const listaPrecos = ['R$ 59,99', ' R$ 100,222',
-                     'R$ 230  ', 'r$  200'];
+  'R$ 230  ', 'r$  200'];
 
 // let somaPrecos = 0;                     
 // listaPrecos.forEach((preco) => {
@@ -80,20 +83,35 @@ const listaPrecos = ['R$ 59,99', ' R$ 100,222',
 // })  
 
 function somarPreco(lista) {
-  let somaPrecos = 0;
+  let somaPrecos = 0
   lista.forEach((preco) => {
     preco = preco.replace(/[ ]+/g, '')
     preco = preco.split('$')
+
     let valor = preco[1]
-    if (valor) {
-      valor = valor.replace(/[,]+/g, '.')
-      valor = Number.parseFloat(valor)
-      valor = valor.toFixed(2)
-      valor = Number.parseFloat(valor)
-      somaPrecos += valor
-    }
+    valor = +valor.replace(/[,]+/g, '.')
+    valor = +valor.toFixed(2)
+    somaPrecos += valor
   })
   return somaPrecos
 }
 
-console.log(somarPreco(listaPrecos))
+const totalPrecos = somarPreco(listaPrecos)
+//console.log(`A soma é ${somarPreco(listaPrecos)}`)
+console.log('A soma é R$',totalPrecos)
+
+//Solução Origamid
+
+function limparPreco(preco){
+  preco = +preco.toUpperCase().replace('R$', '').trim().replace(',', '.')
+  preco = +preco.toFixed(2)
+  return preco
+}
+
+let soma = 0
+listaPrecos.forEach((preco) => {
+  soma += limparPreco(preco)
+})
+
+console.log(soma.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}))
+limparPreco(listaPrecos[1])

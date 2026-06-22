@@ -34,6 +34,8 @@ const Carro = {
     }
 }
 
+// EXERCÍCIOS
+
 // Crie uma função construtora de Pessoas
 // Deve conter nome, sobrenome e idade
 // Crie um método no protótipo que retorne

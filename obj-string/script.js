@@ -12,6 +12,8 @@
 // console.log(valor.trimStart()) //'R$ 23,90 ' 
 // console.log(valor.trimEnd()) //' R$ 23,90'
 
+// EXERCÍCIOS
+
 // Utilizando o foreach na array abaixo,
 // some os valores de Taxa e os valores de Recebimento
 
