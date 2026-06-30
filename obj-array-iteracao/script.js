@@ -191,33 +191,33 @@ const cursos = document.querySelectorAll('.curso')
 
 const cursosArray = Array.from(cursos)
 
-const cursosObj = cursosArray.reduce((acumulador, curso, index) => {
-  const cursoTitulo = curso.children[0].innerHTML
-  const cursoDescricao = curso.children[1].innerHTML
-  const cursoAulas = curso.children[2].innerHTML
-  const cursoHoras = curso.children[3].innerHTML
+const cursosObj = cursosArray.map((curso) => {
+  const cursoTitulo = curso.querySelector('h1').innerText
+  const cursoDescricao = curso.querySelector('p').innerText
+  const cursoAulas = curso.querySelector('.aulas').innerText
+  const cursoHoras = curso.querySelector('.horas').innerText
 
-  acumulador[index] = {
+  return {
     titulo: cursoTitulo,
     descricao: cursoDescricao,
     aulas: +cursoAulas,
     horas: +cursoHoras
   }
-
-  return acumulador
-}, [])
+})
 
 console.log(cursosObj)
 
 // Retorne uma lista com os
 // números maiores que 100
 const numeros = [3, 44, 333, 23, 122, 322, 33];
-
+const numerosMaior100 = numeros.filter(numero => numero > 100)
+console.log(numerosMaior100)
 
 // Verifique se Baixo faz parte
 // da lista de instrumentos e retorne true
 const instrumentos = ['Guitarra', 'Baixo', 'Bateria', 'Teclado']
-
+const hasBaixo = instrumentos.some(instrumento => instrumento === 'Baixo')
+console.log(hasBaixo)
 
 // Retorne o valor total das compras
 const compras = [
@@ -242,3 +242,11 @@ const compras = [
     preco: 'R$ 10,60'
   }
 ]
+
+const totalCompras = compras.reduce((acumulador, atual) => {
+  preco = atual.preco
+  preco = +preco.replace('R$', '').trim().replace(',', '.')
+  return acumulador + preco
+}, 0)
+
+console.log(totalCompras)
