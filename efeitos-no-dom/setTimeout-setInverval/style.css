@@ -1,0 +1,7 @@
+body {
+    background-color: rgb(100, 143, 221);
+}
+
+.active {
+    background-color: rgb(245, 76, 76);
+}
