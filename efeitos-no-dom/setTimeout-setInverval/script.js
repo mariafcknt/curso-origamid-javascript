@@ -44,8 +44,8 @@ function iniciar() {
         alternador(status)
         return
     } else {
-        const statusHtml = 'Cronômetro em andamento'
-        statusHtml.innerHTML = statusHtml
+        const statusPlay = 'Cronômetro em andamento'
+        statusHtml.innerHTML = statusPlay
         intervalo = setInterval(contador, 1000)
         function contador() {
             console.log(i++)
@@ -57,7 +57,7 @@ function iniciar() {
 }
 
 function alternador(status) {
-    if (status === 'pause') {
+    if (status === 'pause' || status == 'reset') {
         iniciar()
     } else {
         pausar()
@@ -65,16 +65,18 @@ function alternador(status) {
 }
 
 function pausar() {
-    const statusHtml = 'Cronômetro pausado'
+    const statusPause = 'Cronômetro pausado'
 
-    if (status === 'pause') { //inicia o cronômetro se ele já estiver pausado
+    if (status === 'pause' ) { //inicia o cronômetro se ele já estiver pausado
         alternador(status)
+        return
+    } else if (status === 'reset') {
         return
     }
 
     clearInterval(intervalo)
     status = 'pause'
-    statusHtml.innerHTML = statusHtml
+    statusHtml.innerHTML = statusPause
 }
 
 function resetar() {
