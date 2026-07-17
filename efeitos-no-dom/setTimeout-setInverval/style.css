@@ -5,3 +5,42 @@ body {
 .active {
     background-color: rgb(245, 76, 76);
 }
+
+.buttons-div {
+    justify-self: center;
+}
+
+button {
+    background-color: white;
+    border-style: none;
+    padding: 8px;
+    font-size: 1.2rem;
+    margin: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    color:rgb(8, 16, 121);
+    font-weight: 600;
+    font-family:'Courier New', Courier, monospace
+}
+
+button:hover{
+    background-color: rgb(8, 16, 121);
+    color: white;
+}
+
+.cronometro {
+   font-size: 3rem;
+   justify-self: center;
+   color:rgb(8, 16, 121);
+   font-weight: 600;
+   font-family:'Courier New', Courier, monospace;
+   margin-bottom: 10px;
+}
+
+.status {
+   font-size: 1rem;
+   justify-self: center;
+   color:rgba(8, 16, 121, 0.80);
+   font-weight: 600;
+   font-family:'Courier New', Courier, monospace;
+}

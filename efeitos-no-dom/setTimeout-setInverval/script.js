@@ -14,11 +14,74 @@
 // }
 // setInterval(changeColor, 2000);
 
-function mudarClasse() {
-    document.body.classList.toggle('active')
-}
-
+// function mudarClasse() { // solução do Origamid
+//     document.body.classList.toggle('active')
+// }
 // setInterval(mudarClasse, 2000)
 
 // Crie um cronometro utilizando o setInterval. Deve ser possível
 // iniciar, pausar e resetar (duplo clique no pausar).
+
+//const cronometroInicio = setInterval(cronometro, 1000)
+const cronometro = document.querySelector('.cronometro')
+const statusHtml = document.querySelector('.status')
+
+const btnIniciar = document.querySelector('.iniciar')
+btnIniciar.addEventListener('click', iniciar)
+
+const btnPausar = document.querySelector('.pausar')
+btnPausar.addEventListener('click', pausar)
+
+const btnResetar = document.querySelector('.resetar')
+btnResetar.addEventListener('dblclick', resetar)
+
+let intervalo = null
+let i = 0;
+let status = null
+
+function iniciar() {
+    if (status === 'play') { //pausa o cronômetro se ele já tiver iniciado
+        alternador(status)
+        return
+    } else {
+        const statusHtml = 'Cronômetro em andamento'
+        statusHtml.innerHTML = statusHtml
+        intervalo = setInterval(contador, 1000)
+        function contador() {
+            console.log(i++)
+            cronometro.innerHTML = i
+        }
+    }
+
+    status = 'play'
+}
+
+function alternador(status) {
+    if (status === 'pause') {
+        iniciar()
+    } else {
+        pausar()
+    }
+}
+
+function pausar() {
+    const statusHtml = 'Cronômetro pausado'
+
+    if (status === 'pause') { //inicia o cronômetro se ele já estiver pausado
+        alternador(status)
+        return
+    }
+
+    clearInterval(intervalo)
+    status = 'pause'
+    statusHtml.innerHTML = statusHtml
+}
+
+function resetar() {
+    status = 'reset'
+    statusHtml.innerHTML = 'Cronômetro resetado'
+    i = 0
+    cronometro.innerHTML = i
+    clearInterval(intervalo)
+}
+
