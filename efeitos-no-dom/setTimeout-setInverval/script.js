@@ -1,17 +1,17 @@
 // Mude a cor da tela para azul e depois para vermelho a cada 2s.
 
-// const body = document.querySelector('body')
-// body.classList.add('vermelho')
+const body = document.querySelector('body')
+body.classList.add('vermelho')
 
-// function changeColor() {
-//     if(body.classList.contains('azul')) {
-//         body.classList.remove('azul')
-//         body.classList.add('vermelho')
-//     } else {
-//         body.classList.remove('vermelho')
-//         body.classList.add('azul')
-//     }
-// }
+function changeColor() {
+    if(body.classList.contains('azul')) {
+        body.classList.remove('azul')
+        body.classList.add('vermelho')
+    } else {
+        body.classList.remove('vermelho')
+        body.classList.add('azul')
+    }
+}
 // setInterval(changeColor, 2000);
 
 // function mudarClasse() { // solução do Origamid
@@ -31,9 +31,7 @@ btnIniciar.addEventListener('click', iniciar)
 
 const btnPausar = document.querySelector('.pausar')
 btnPausar.addEventListener('click', pausar)
-
-const btnResetar = document.querySelector('.resetar')
-btnResetar.addEventListener('dblclick', resetar)
+btnPausar.addEventListener('dblclick', resetar)
 
 let intervalo = null
 let i = 0;
@@ -48,12 +46,12 @@ function iniciar() {
         statusHtml.innerHTML = statusPlay
         intervalo = setInterval(contador, 1000)
         function contador() {
-            console.log(i++)
-            cronometro.innerHTML = i
+            cronometro.innerHTML = i++
         }
     }
 
     status = 'play'
+    //btnIniciar.setAttribute('disabled', '') //desativa o botão depois que o cronômetro iniciar
 }
 
 function alternador(status) {
@@ -75,8 +73,10 @@ function pausar() {
     }
 
     clearInterval(intervalo)
+
     status = 'pause'
     statusHtml.innerHTML = statusPause
+    //btnIniciar.removeAttribute('disabled', '') //reativa o botão depois que o cronômetro pausar
 }
 
 function resetar() {
