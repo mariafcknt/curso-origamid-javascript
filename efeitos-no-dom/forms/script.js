@@ -1,17 +1,21 @@
 const contato = document.querySelector('#contato')
-function handleKeyUp(event) {
-    const target = event.target
+const dados = {}
+function handleChange(event) {
+    dados[event.target.name] = event.target.value
 
-    if(!target.checkValidity()) {
-        target.classList.add('invalido')
-        contato.nome.setCustomValidity('Este campo é importante')
-        target.nextElementSibling.innerText = target.validationMessage
-    }
+    // document.body.style.backgroundColor = event.target.value
 
+    // if (event.target.checked) {
+    //     console.log(event.target.value)
+    // }
 
-    console.log(event.target.value)
-    console.log(event.target.checkValidity())
+    // const target = event.target
+    // if (!target.checkValidity()) {
+    //     target.classList.add('invalido')
+    //     contato.nome.setCustomValidity('Este campo é importante')
+    //     target.nextElementSibling.innerText = target.validationMessage
+    // }
 }
 
-contato.addEventListener('keyup', handleKeyUp)
+contato.addEventListener('change', handleChange)
 
