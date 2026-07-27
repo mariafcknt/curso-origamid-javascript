@@ -65,29 +65,12 @@ img {
     background-color: #101a08;
 }
 
-.erro {
-    display: none;
-    background-color: #8e1313;
-    color: #fcc5c5;
-    padding: 4px;
-    border-radius: 4px;
-    margin-top: 8px;
-    letter-spacing: 1;
-    animation: surgir 0.8s ease forwards;
-}
-
-@keyframes surgir {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .active {
     display: flex;
+}
+
+.erro {
+    background-color: #8e1313 !important;
+    color:white;
 }
