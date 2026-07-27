@@ -62,10 +62,6 @@ body {
     animation: surgir 0.8s ease forwards;
 }
 
-.active {
-    display: block;
-}
-
 @keyframes surgir {
   from {
     opacity: 0;
@@ -78,6 +74,23 @@ body {
   }
 }
 
-.endereco {
+.resultado {
+    display: none;
     margin-top: 2rem;
+}
+
+.endereco {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.endereco li {
+    margin-top: 8px;
+    marker: none;
+}
+
+.active {
+    display: block;
 }

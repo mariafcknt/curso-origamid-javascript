@@ -9,12 +9,19 @@
 <body>
     <form name="buscarCep" id="buscarCep">
         <label for="cep">CEP</label>
-        <input type="text" value="01001000" name="cep" id="cep" required placeholder="Digite o CEP">
+        <input type="text" name="cep" id="cep" required placeholder="Digite o CEP">
     </form>
 
     <span class="erro">⚠️ O CEP deve conter este formato: 00000-000</span>
     
     <button class="btn">Buscar Endereço</button>
+
+    <div class="resultado">
+        <h1>Resultado 🗺️</h1>
+        <ul class="endereco">
+        </ul>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

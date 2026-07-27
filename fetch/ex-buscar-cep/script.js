@@ -8,11 +8,14 @@ const buscarCep = document.getElementById('buscarCep')
 const btn = document.querySelector('.btn')
 btn.addEventListener('click', handleClick)
 
+const erro = document.querySelector('.erro')
+const endereco = document.querySelector('ul')
+const resultado = document.querySelector('.resultado')
+
 function handleClick(event) {
     let cepInput = buscarCep.elements.cep.value
     cepInput = formatCep(cepInput)
-
-    const erro = document.querySelector('.erro')
+    removeActiveClass(resultado)
 
     if(cepInput.length === 8) {
         removeActiveClass(erro)
@@ -31,6 +34,7 @@ function formatCep(cep) {
 }
 
 function addActiveClass(element) {
+    console.log(element)
     element.classList.add('active')
 }
 
@@ -38,35 +42,52 @@ function removeActiveClass(element) {
     element.classList.remove('active')
 }
 
-function showEndereco(body) {
-    //body = body.replace('"','')
-    
-    const endereco = document.createElement('div')
-    endereco.classList.add('endereco')
-    document.body.appendChild(endereco)
-    //endereco.innerText = body
+function addInfoInHtml(chave, valor, container) {
+    const li = document.createElement('li')
+    li.innerHTML = `<b>${chave}:</b> ${valor}`
+    container.appendChild(li)
 }
 
 function formatResponse(body){
-    //console.log(body)
-  //  body = body(ne)
+    endereco.innerHTML = ''
+    addActiveClass(resultado)
+    body = Object.entries(body)
     body.forEach(item => {
-        console.log(item)
+        let chave = item[0]
+        let valor = item[1]
+        chave = formatInfo(chave)
+        addInfoInHtml(chave, valor, endereco)
     })
 }
 
+function formatInfo(chave) {
+    if (chave.length <= 5) {
+        chave = chave.toUpperCase()
+    } else {
+        chave = chave.charAt(0).toUpperCase() + chave.slice(1)
+    }
+
+    if (chave === 'Regiao'){
+        chave = 'Região'
+    }
+
+    return chave
+}
 
 function fetchCep(cep) {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then(response => response.json())
-        .then(body => {
-            showEndereco(body)
+    .then(response => response.json())
+    .then(body => {
+        if (body.erro) {
+            erro.innerText = '⚠️ CEP não encontrado'
+            addActiveClass(erro)
+        } else {
             formatResponse(body)
-            return
-        })
+        }
+    })
+    .catch(() => {
+        erro.innerText = '⚠️ Erro ao pesquisar CEP'
+        addActiveClass(erro)
+    })
 }
-
-
-//TODO: adicionar todos os itens do json (bairro, cidade, etc na div com forEach)
-
 
