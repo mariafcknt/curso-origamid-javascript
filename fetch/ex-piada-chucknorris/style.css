@@ -1,0 +1,93 @@
+body {
+    background: #b6ad90;
+    color: rgb(0, 0, 0);
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15%;
+    text-align: center;
+}
+
+.triangle-clip {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.titulo span {
+    color: #333d29;
+    font-weight: 800;
+}
+
+img {
+    align-self: center;
+}
+
+.piada-container {
+    margin-top: 12px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+
+.piada-container p{
+    margin: 0px;
+    min-width: 100%;
+    min-height: 1rem;
+    background-color: white;
+    border-radius: 32px;
+    padding: 1rem;
+    font-size: 1.2rem;
+    /* https://smoothshadows.com*/
+    box-shadow: 0px 9px 6px rgba(3, 7, 18, 0.06), 0px 37px 24px rgba(3, 7, 18, 0.06);
+}
+
+.btn {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 2px;
+    border: none;
+    background-color: #333d29;
+    color: white;
+    padding: 12px;
+    font-size: 1.5rem;
+    border-radius: 24px;
+    display: block;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.btn:hover {
+    background-color: #101a08;
+}
+
+.erro {
+    display: none;
+    background-color: #8e1313;
+    color: #fcc5c5;
+    padding: 4px;
+    border-radius: 4px;
+    margin-top: 8px;
+    letter-spacing: 1;
+    animation: surgir 0.8s ease forwards;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.active {
+    display: flex;
+}

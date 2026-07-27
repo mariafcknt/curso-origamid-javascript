@@ -34,7 +34,6 @@ function formatCep(cep) {
 }
 
 function addActiveClass(element) {
-    console.log(element)
     element.classList.add('active')
 }
 
