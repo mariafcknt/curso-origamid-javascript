@@ -9,34 +9,63 @@ const btn = document.querySelector('.btn')
 btn.addEventListener('click', handleClick)
 
 function handleClick(event) {
-    const cepInput = buscarCep.elements.cep.value
-    const cepChar = String(cepInput).length
+    let cepInput = buscarCep.elements.cep.value
+    cepInput = formatCep(cepInput)
+
     const erro = document.querySelector('.erro')
 
-    if(cepInput && cepChar === 8) {
-        erro.classList.remove('ativo')
-        console.log(cepInput)
+    if(cepInput.length === 8) {
+        removeActiveClass(erro)
+        fetchCep(cepInput)
     } else {
-        erro.classList.add('ativo')
+        addActiveClass(erro)
     }
 }
 
-const endereco = document.createElement('div')
-endereco.classList.add('endereco')
-document.body.appendChild(endereco)
+function formatCep(cep) {
+    cep = String(cep)
+    if (cep.includes('-')) {
+        cep = cep.replace('-', '')
+    }
+    return cep
+}
 
-console.log(endereco)
+function addActiveClass(element) {
+    element.classList.add('active')
+}
 
-const cep = '01001000'
+function removeActiveClass(element) {
+    element.classList.remove('active')
+}
 
-fetch(`https://viacep.com.br/ws/${cep}/json/`)
-.then(response => response.json())
-.then(body => {
-    console.log(body)
-    console.log(body.bairro)
+function showEndereco(body) {
+    //body = body.replace('"','')
+    
+    const endereco = document.createElement('div')
+    endereco.classList.add('endereco')
+    document.body.appendChild(endereco)
+    //endereco.innerText = body
+}
 
-    //endereco.innerText = body.bairro
-})
+function formatResponse(body){
+    //console.log(body)
+  //  body = body(ne)
+    body.forEach(item => {
+        console.log(item)
+    })
+}
+
+
+function fetchCep(cep) {
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(body => {
+            showEndereco(body)
+            formatResponse(body)
+            return
+        })
+}
+
 
 //TODO: adicionar todos os itens do json (bairro, cidade, etc na div com forEach)
 

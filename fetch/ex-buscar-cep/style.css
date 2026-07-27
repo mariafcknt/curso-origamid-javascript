@@ -40,7 +40,7 @@ body {
 }
 
 #buscarCep input::placeholder,
-#buscarCep input[type="number"] {
+#buscarCep input[type="text"] {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     padding-left: 12px;
@@ -62,7 +62,7 @@ body {
     animation: surgir 0.8s ease forwards;
 }
 
-.ativo {
+.active {
     display: block;
 }
 
