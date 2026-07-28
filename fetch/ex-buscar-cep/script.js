@@ -4,17 +4,18 @@
 // crie um formulário onde o usuário pode digitar o cep
 // e o endereço completo é retornado ao clicar em buscar
 
-const buscarCep = document.getElementById('buscarCep')
+let cepInput = document.getElementById('cep')
 const btn = document.querySelector('.btn')
 btn.addEventListener('click', handleClick)
+// cepInput.addEventListener('keyup', handleClick) // solução alternativa
 
 const erro = document.querySelector('.erro')
 const endereco = document.querySelector('ul')
 const resultado = document.querySelector('.resultado')
 
 function handleClick(event) {
-    let cepInput = buscarCep.elements.cep.value
-    cepInput = formatCep(cepInput)
+    console.log(event)
+    cepInput = formatCep(cepInput.value)
     removeActiveClass(resultado)
 
     if(cepInput.length === 8) {
