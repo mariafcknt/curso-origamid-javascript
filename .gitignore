@@ -1,8 +1,8 @@
 # Dependências
-/node_modules
+node_modules/
 
 # Build / output do webpack
-/dist
+dist/
 main.js
 
 # Logs
